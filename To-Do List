@@ -1,0 +1,79 @@
+# Define a function to display the menu options
+def display_menu():
+    print("\n======= TO-DO LIST MENU =======")
+    print("1. View To-Do List")
+    print("2. Add Task")
+    print("3. Mark Tak as Completed")
+    print("4. Delete Task")
+    print("5. Exit")
+    print("===============================")
+    
+# Initialize an empty list to store tasks
+tasks = []
+
+# Function to view the to-do list
+def view_tasks():
+    print("\n======= TO-DO LIST =======")
+    if not tasks:
+        print("No tasks found.")
+    else:
+        for index, task in enumerate(tasks, start=1):
+            print(f"{index}. {task}")
+            
+# Function to add a task to the list
+def add_task():
+    task = input("\nEnter task: ")
+    tasks.append(task)
+    print(f"Task '{task}' added to the to-do list.")
+                
+# Function to mark a task as completed
+def mark_completed():
+    view_tasks()
+    try:
+        task_index = int(input("Enter task number to mark as completed: "))  -1
+        tasks.pop(task_index)
+        print("Task marked as completed.")
+    except IndexError:
+        print("Invalid task number. Please try again.")
+    except ValueError:
+        print("Invalid input. PLease enter a valid task number.")
+        
+# Function to delete a task from the list
+def delete_task():
+    view_tasks()
+    try:
+        task_index = int(input("Enter task number to delete: ")) -1
+        deleted_task = tasks.pop(task_index)
+        print(f"TAsk '{deleted_task}' deleted.")
+    except IndexError:
+        print("Invalid taask number. Please try again.")
+    except ValueError:
+        print("Invalid input. PLease enter a valid task number.")
+        
+# Main program loop
+while True:
+    display_menu()
+    choice = input("Enter your choice (1-5): ")
+    
+    if choice == '1':
+        view_tasks()
+    elif choice == '2':
+        add_task()
+    elif choice =='3':
+        mark_completed()
+    elif choice == '4':
+        delete_task()
+    elif choice == '5':
+        print("Exiting the program...")
+        break 
+    else:
+        print("Invalid choice. Please enter a number from 1 to 5.")                          
+        
+        
+        
+        
+        
+        
+        
+        
+        
